@@ -3,12 +3,12 @@ package com.desafioteste.teste.service;
 import com.desafioteste.teste.dto.AnaliseDTO;
 import com.desafioteste.teste.dto.PropriedadeDTO;
 import com.desafioteste.teste.entities.Comodo;
+import com.desafioteste.teste.exceptions.DistrictNotFound;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 @Service
 public class AvaliacaoService {
@@ -32,51 +32,43 @@ public class AvaliacaoService {
         String bairro = propriedadeDTO.getBairro();
         List<Comodo> comodoList = propriedadeDTO.getComodos();
 
-        Double totalMetro = totalMetros(comodoList);
+        Double totalMetro = totalMetrosMetodo(comodoList);
         Double valorPropriedade = valorPropriedade(bairro, totalMetro);
+        Map<String, Double> metroComodo = metroPorComodo(comodoList);
+
 
         return AnaliseDTO.builder()
                 .nome(nomePropriedade)
                 .totalMetros(totalMetro)
                 .valorPropriedade(valorPropriedade)
-                .maiorComodo(maiorComodo(comodoList))
+                .maiorComodo(maiorComodo(metroComodo))
                 .metroPorComodo(metroPorComodo(comodoList))
                 .build();
-
     }
 
-    public Double totalMetros(List<Comodo> comodoList){
-        double area = 0.0;
+    private Double totalMetrosMetodo(List<Comodo> comodoList){
+        double totalMetros = 0.0;
 
-        for (Comodo comodo: comodoList) {
-            Double largura = comodo.getLargura();
-            Double comprimento = comodo.getComprimento();
-
-            area += largura*comprimento;
+        for (Comodo comodo : comodoList) {
+            totalMetros += calculaArea(comodo.getComprimento(), comodo.getLargura());
         }
-        return area;
+        return totalMetros;
     }
 
-    public Map<String, Double> metroPorComodo(List<Comodo> comodoList){
+    private Double calculaArea(Double comprimento, Double largura){ return  largura*comprimento;}
 
+    private Map<String, Double> metroPorComodo(List<Comodo> comodoList){
         Map<String, Double> metroComodo = new HashMap<>();
 
-        for (Comodo comodo: comodoList) {
-            //criar um metodo disso
-            Double comprimento = comodo.getComprimento();
-            Double largura = comodo.getLargura();
-            Double area = comprimento*largura;
-
+        for (Comodo comodo : comodoList) {
+            Double area =  calculaArea(comodo.getComprimento(), comodo.getLargura());;
             metroComodo.put(comodo.getNome(), area);
         }
 
         return metroComodo;
     }
 
-    public String maiorComodo(List<Comodo> comodoList){
-        String maiorComodo;
-        Map<String, Double> metroComodo = metroPorComodo(comodoList);
-
+    private String maiorComodo(Map<String, Double> metroComodo ){
         Map.Entry<String, Double> maxComodo = null;
 
         for (Map.Entry<String, Double> entry: metroComodo.entrySet()) {
@@ -86,22 +78,14 @@ public class AvaliacaoService {
         }
 
         assert maxComodo != null;
-        maiorComodo = maxComodo.getKey();
-
-        return maiorComodo;
+        return maxComodo.getKey();
     }
 
-    public Double valorPropriedade(String bairro, Double totalMetro) {
-        double valorPorMetro = 0.0;
+    private Double valorPropriedade(String bairro, Double totalMetro) throws DistrictNotFound {
         Map<String, Double> bairroCidade = getBairrosCidade();
 
-        for (String key: bairroCidade.keySet()) {
-            if (key.equals(bairro)) {
-                valorPorMetro = bairroCidade.get(key);
-                break;
-            }
-        }
-
+        if(!bairroCidade.containsKey(bairro)) throw new DistrictNotFound();
+        Double valorPorMetro = bairroCidade.get(bairro);
 
         return totalMetro*valorPorMetro;
     }
