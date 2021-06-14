@@ -5,7 +5,6 @@ import com.challenge.quality.controllers.response.HomeResponse;
 import com.challenge.quality.exception.NeighborhoodException;
 import com.challenge.quality.service.HomeService;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.Collections;
 import java.util.HashMap;

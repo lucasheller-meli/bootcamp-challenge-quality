@@ -13,10 +13,10 @@ import java.util.List;
 
 @Data
 @Builder
-public class HomeRequest{
+public class HomeRequest {
 
     @NotBlank(message = "O nome da propriedade não pode estar vazio.")
-    @Pattern(regexp = "^[A-Z][a-zA-Z0-9]*$",message = "O nome da propriedade deve começar com uma letra maiúscula.")
+    @Pattern(regexp = "^[A-Z][a-zA-Z0-9]*$", message = "O nome da propriedade deve começar com uma letra maiúscula.")
     @Size(max = 30, message = "O comprimento do nome não pode exceder {max} caracteres.")
     private String name;
 

@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 public class RoomRequest {
 
     @NotBlank(message = "O campo não pode estar vazio.")
-    @Pattern(regexp = "^[A-Z][a-zA-Z0-9]*$",message = "O nome do cômodo deve começar com uma letra maiúscula.")
+    @Pattern(regexp = "^[A-Z][a-zA-Z0-9]*$", message = "O nome do cômodo deve começar com uma letra maiúscula.")
     @Size(max = 30, message = "O nome do cômodo não pode exceder {max} caracteres.")
     private String name;
 
