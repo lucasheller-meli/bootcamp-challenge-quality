@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.challenge.quality.controllers.request.RoomRequestTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-06-11T20:02:11" hostname="BR0C02DX7N8MD6N" time="0.095">
+  <properties/>
+  <testcase name="verifyRoomRequestWithEmptyAttributes()" classname="com.challenge.quality.controllers.request.RoomRequestTest" time="0.016"/>
+  <testcase name="verifyRoomRequestMinValue()" classname="com.challenge.quality.controllers.request.RoomRequestTest" time="0.029"/>
+  <testcase name="verifyRoomRequestSizeAnnotation()" classname="com.challenge.quality.controllers.request.RoomRequestTest" time="0.048"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

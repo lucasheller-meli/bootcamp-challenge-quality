@@ -1,0 +1,10 @@
+com/challenge/quality/controllers/request/RoomRequestTest.java
+ com.challenge.quality.controllers.request.RoomRequestTest
+com/challenge/quality/QualityApplicationTests.java
+ com.challenge.quality.QualityApplicationTests
+com/challenge/quality/controllers/request/HomeRequestTest.java
+ com.challenge.quality.controllers.request.HomeRequestTest
+com/challenge/quality/service/impl/HomeServiceImplTest.java
+ com.challenge.quality.service.impl.HomeServiceImplTest
+com/challenge/quality/integration/ApplicationTest.java
+ com.challenge.quality.integration.ApplicationTest

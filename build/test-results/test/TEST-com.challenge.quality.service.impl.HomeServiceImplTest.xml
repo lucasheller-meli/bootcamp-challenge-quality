@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.challenge.quality.service.impl.HomeServiceImplTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-06-11T20:02:11" hostname="BR0C02DX7N8MD6N" time="0.081">
+  <properties/>
+  <testcase name="Analisa uma casa com um bairro que nao existe." classname="com.challenge.quality.service.impl.HomeServiceImplTest" time="0.066"/>
+  <testcase name="Analisa uma casa com maior quarto diferente do esperado.." classname="com.challenge.quality.service.impl.HomeServiceImplTest" time="0.005"/>
+  <testcase name="Analisa uma casa com sucesso." classname="com.challenge.quality.service.impl.HomeServiceImplTest" time="0.001"/>
+  <testcase name="Analisa uma casa verificando tamanho dos comodos." classname="com.challenge.quality.service.impl.HomeServiceImplTest" time="0.002"/>
+  <testcase name="Analisa uma casa com area total diferente do esperado." classname="com.challenge.quality.service.impl.HomeServiceImplTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

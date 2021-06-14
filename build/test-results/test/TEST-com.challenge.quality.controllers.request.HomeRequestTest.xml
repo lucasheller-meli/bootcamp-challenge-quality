@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.challenge.quality.controllers.request.HomeRequestTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-06-11T20:02:11" hostname="BR0C02DX7N8MD6N" time="0.124">
+  <properties/>
+  <testcase name="verifyPatternHomeRequestAnnotation()" classname="com.challenge.quality.controllers.request.HomeRequestTest" time="0.053"/>
+  <testcase name="verifyNotBlankHomeRequestAnnotation()" classname="com.challenge.quality.controllers.request.HomeRequestTest" time="0.015"/>
+  <testcase name="verifySizeHomeRequestAnnotation()" classname="com.challenge.quality.controllers.request.HomeRequestTest" time="0.055"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
