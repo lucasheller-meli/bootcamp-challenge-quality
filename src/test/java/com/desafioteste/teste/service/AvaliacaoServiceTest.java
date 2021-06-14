@@ -16,6 +16,7 @@ class AvaliacaoServiceTest {
     private List<Comodo> listComodo;
     private final AvaliacaoService avaliacaoService = new AvaliacaoService();
     private AnaliseDTO analiseTeste;
+    private PropriedadeDTO prop;
 
     @BeforeEach
     public void setUp(){
@@ -25,16 +26,20 @@ class AvaliacaoServiceTest {
         listComodo.add(com1);
         listComodo.add(com2);
 
-        analiseTeste = avaliacaoService.analise(PropriedadeDTO.builder()
+        prop = PropriedadeDTO.builder()
                 .nome("Casa Moderna")
                 .bairro("catole")
-                .comodos(listComodo).build());
+                .comodos(listComodo).build();
+
     }
 
     @Test
     void shouldReturnTotalMetros() {
         //act
+        analiseTeste = avaliacaoService.analise(prop);
+
         Double totalMetro = analiseTeste.getTotalMetros();
+
         //assert
         assertEquals(13.0, totalMetro);
     }
@@ -46,6 +51,8 @@ class AvaliacaoServiceTest {
         metroComodoExpect.put("sala", 4.0);
         metroComodoExpect.put("quarto", 9.0);
 
+        analiseTeste = avaliacaoService.analise(prop);
+
         //act
         Map<String, Double> metroComodo = analiseTeste.getMetroPorComodo();
 
@@ -56,6 +63,7 @@ class AvaliacaoServiceTest {
     @Test
     void shouldReturnMaiorComodoTeste() {
         //act
+        analiseTeste = avaliacaoService.analise(prop);
         String maiorComodo = analiseTeste.getMaiorComodo();
 
         //assert
@@ -66,12 +74,10 @@ class AvaliacaoServiceTest {
     void shouldVerifyExceptionDistrictNotFound() {
         //arrange
         String exp = "Bairro não encontrado!";
+        prop.setBairro("Bairro nao encontrado");
 
         //act
-        Exception exception = assertThrows(DistrictNotFound.class, () -> {avaliacaoService.analise(PropriedadeDTO.builder()
-                .nome("Casa Moderna")
-                .bairro("bairro")
-                .comodos(listComodo).build());});
+        Exception exception = assertThrows(DistrictNotFound.class, () -> {avaliacaoService.analise(prop);});
 
         //assert
         assertEquals(exception.getMessage(), exp);
@@ -80,6 +86,7 @@ class AvaliacaoServiceTest {
     @Test
     void shouldReturnValorPropriedade(){
         //act
+        analiseTeste = avaliacaoService.analise(prop);
         Double valorPropriedade = analiseTeste.getValorPropriedade();
 
         //assert
