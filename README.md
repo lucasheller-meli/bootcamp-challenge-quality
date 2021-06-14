@@ -2,7 +2,7 @@
 
 ### Dependências
 
-Gradle </br>
+Gradle 7.0.2 </br>
 Java 11 </br>
 
 ### Requisistos mínimos
