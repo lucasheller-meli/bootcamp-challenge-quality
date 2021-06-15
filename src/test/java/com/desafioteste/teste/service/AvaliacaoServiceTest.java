@@ -48,8 +48,9 @@ class AvaliacaoServiceTest {
     void shouldReturnMetroPorComodo() {
         //arrange
         Map<String, Double> metroComodoExpect = new HashMap<>();
-        metroComodoExpect.put("sala", 4.0);
-        metroComodoExpect.put("quarto", 9.0);
+
+        metroComodoExpect.put("Sala", 4.0);
+        metroComodoExpect.put("Quarto", 9.0);
 
         analiseTeste = avaliacaoService.analise(prop);
 
@@ -67,7 +68,7 @@ class AvaliacaoServiceTest {
         String maiorComodo = analiseTeste.getMaiorComodo();
 
         //assert
-        assertEquals("quarto", maiorComodo);
+        assertEquals("Quarto", maiorComodo);
     }
 
     @Test
